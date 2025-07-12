@@ -118,5 +118,32 @@
       <button type="submit" class="submit-btn">Submit</button>
     </form>
   </div>
+
+<script>
+  const stars = document.querySelectorAll('#star-container span');
+  const ratingInput = document.getElementById('rating-input');
+  let selectedRating = 0;
+
+  stars.forEach((star, index) => {
+    star.addEventListener('mouseover', () => {
+      highlightStars(index + 1);
+    });
+    star.addEventListener('mouseout', () => {
+      highlightStars(selectedRating);
+    });
+    star.addEventListener('click', () => {
+      selectedRating = index + 1;
+      ratingInput.value = selectedRating;
+      highlightStars(selectedRating);
+    });
+  });
+
+  function highlightStars(rating) {
+    stars.forEach((star, i) => {
+      star.classList.toggle('selected', i < rating);
+    });
+  }
+</script>
 </body>
+
 </html>
