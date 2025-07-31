@@ -40,12 +40,12 @@
     }
 
     .section-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
 
     .section-tabs button {
       background-color: #2a3b03;
@@ -156,101 +156,99 @@
       }
     }
   
-
     .logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
 
     .logo-img {
-  max-width: 560px;
-  height: 260px;
-  display: block;
-  margin: 0 auto;
-}
+      max-width: 560px;
+      height: 260px;
+      display: block;
+      margin: 0 auto;
+    }
 
-.footer {
-  background-color: #2a3b03;
-  color: #D6D4A9;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 40px;
-}
+    .footer {
+      background-color: #2a3b03;
+      color: #D6D4A9;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
 
-.footer .contact-info {
-  margin-bottom: 20px;
-}
+    .footer .contact-info {
+      margin-bottom: 20px;
+    }
 
-.footer .contact-info h3 {
-  color: #D6D4A9;
-  margin-bottom: 10px;
-  font-size: 1.1em;
-}
+    .footer .contact-info h3 {
+      color: #D6D4A9;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
 
-.footer .contact-info p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
+    .footer .contact-info p {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
 
-.footer .social-links {
-  margin-bottom: 15px;
-}
+    .footer .social-links {
+      margin-bottom: 15px;
+    }
 
-.footer .social-links a {
-  display: inline-block;
-  margin: 0 15px;
-  color: #D6D4A9;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    .footer .social-links a {
+      display: inline-block;
+      margin: 0 15px;
+      color: #D6D4A9;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-.footer .social-links a:hover {
-  color: #ffffff;
-}
+    .footer .social-links a:hover {
+      color: #ffffff;
+    }
 
-.footer p {
-  margin: 0;
-  font-size: 0.9em;
-}
+    .footer p {
+      margin: 0;
+      font-size: 0.9em;
+    }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 15px 10px;
-  }
-  
-  .footer .contact-info {
-    margin-bottom: 15px;
-  }
-  
-  .footer .contact-info h3 {
-    font-size: 1em;
-    margin-bottom: 8px;
-  }
-  
-  .footer .contact-info p {
-    font-size: 0.8em;
-    line-height: 1.4;
-    margin: 3px 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-  
-  .footer .social-links {
-    margin-bottom: 10px;
-  }
-  
-  .footer .social-links a {
-    margin: 0 10px;
-  }
-  
-  .footer p {
-    font-size: 0.8em;
-  }
-}
-
-</style>
+    @media (max-width: 768px) {
+      .footer {
+        padding: 15px 10px;
+      }
+      
+      .footer .contact-info {
+        margin-bottom: 15px;
+      }
+      
+      .footer .contact-info h3 {
+        font-size: 1em;
+        margin-bottom: 8px;
+      }
+      
+      .footer .contact-info p {
+        font-size: 0.8em;
+        line-height: 1.4;
+        margin: 3px 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+      
+      .footer .social-links {
+        margin-bottom: 10px;
+      }
+      
+      .footer .social-links a {
+        margin: 0 10px;
+      }
+      
+      .footer p {
+        font-size: 0.8em;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -259,7 +257,6 @@
     <button onclick="window.location.href='about.html'">About</button>
   </header>
 
-  
   <div class="logo-container">
     <img src="logo_transparent.png" alt="Grand Hôtel Logo" class="logo-img" />
   </div>
@@ -281,12 +278,11 @@
 
   <div class="filters">
     <button class="filter-btn active" data-category="all">All</button>
-<button class="filter-btn" data-category="les_rafraîchissements">Les Rafraîchissements</button>
-<button class="filter-btn" data-category="cafe">Café</button>
-<button class="filter-btn" data-category="arak">Arak</button>
-<button class="filter-btn" data-category="les_vins_locaux">Les Vins Locaux</button>
-<button class="filter-btn" data-category="les_aperitifs">Les Apéritifs</button>
-
+    <button class="filter-btn" data-category="les_rafraichissements">Les Rafraîchissements</button>
+    <button class="filter-btn" data-category="cafe">Café</button>
+    <button class="filter-btn" data-category="arak">Arak</button>
+    <button class="filter-btn" data-category="les_vins_locaux">Les Vins Locaux</button>
+    <button class="filter-btn" data-category="les_aperitifs">Les Apéritifs</button>
   </div>
 
   <div class="menu" id="menu"></div>
@@ -314,47 +310,57 @@
 
   <script>
     const menuItems = [
-  { title: "Ice Tea", price: "$2.00", category: "les_rafraîchissements" },
-  { title: "Boissons gazeuze", price: "$1.75", category: "les_rafraîchissements" },
-  { title: "Limonade", price: "$2.75", category: "les_rafraîchissements" },
-  { title: "Jus", price: "$1.75", category: "les_rafraîchissements" },
-  { title: "Eau gazeuze", price: "$2.00", category: "les_rafraîchissements" },
-  { title: "Bière Almaza", price: "$2.50", category: "les_rafraîchissements" },
-  { title: "Bière sans alcool", price: "$2.50", category: "les_rafraîchissements" },
-  { title: "Bière Mexicaine", price: "$3.00", category: "les_rafraîchissements" },
-  { title: "Bouteille eau tonic", price: "$1.50", category: "les_rafraîchissements" },
-  { title: "Nescafé", price: "$2.50", category: "cafe" },
-  { title: "Chocolat Chaud", price: "$3.25", category: "cafe" },
-  { title: "Espresso", price: "$2.50", category: "cafe" },
-  { title: "Cappuccino", price: "$3.00", category: "cafe" },
-  { title: "Café Turc", price: "$2.00", category: "cafe" },
-  { title: "Café Blanc", price: "$2.00", category: "cafe" },
-  { title: "Thé", price: "$1.75", category: "cafe" },
-  { title: "Infusion", price: "$2.00", category: "cafe" },
-  { title: "Btle eau grande", price: "$1.50", category: "cafe" },
-  { title: "Btle eau petite", price: "$1.00", category: "cafe" },
-  { title: "Bouteille spéciale", price: "$24.00", category: "arak" },
-  { title: "1/2 Bouteille spéciale", price: "$18.00", category: "arak" },
-  { title: "1/4 Bouteille spéciale", price: "$12.00", category: "arak" },
-  { title: "Verre d'arak Special", price: "$5.00", category: "arak" },
-  { title: "Rouge, Blanc, Rosé (La Bouteille)", price: "$16.00", category: "les_vins_locaux" },
-  { title: "Réserve du couvent", price: "$20.00", category: "les_vins_locaux" },
-  { title: "1/2 Bouteille", price: "$12.00", category: "les_vins_locaux" },
-  { title: "1/4 Bouteille", price: "$8.00", category: "les_vins_locaux" },
-  { title: "Verre de Vin", price: "$5.00", category: "les_vins_locaux" },
-  { title: "Whisky Scotch (Verre)", price: "$5.00", category: "les_aperitifs" },
-  { title: "Whisky 1/2 Bouteille", price: "$30.00", category: "les_aperitifs" },
-  { title: "Whisky la Bouteille", price: "$48.00", category: "les_aperitifs" },
-  { title: "Whisky Scotch (Verre) (old)", price: "$7.00", category: "les_aperitifs" },
-  { title: "Whisky 1/2 Bouteille (old)", price: "$50.00", category: "les_aperitifs" },
-  { title: "Whisky la Bouteille (old)", price: "$75.00", category: "les_aperitifs" },
-  { title: "Verre Gin", price: "$4.50", category: "les_aperitifs" },
-  { title: "Verre Vodka", price: "$4.50", category: "les_aperitifs" },
-  { title: "Verre Gin Tonic", price: "$6.00", category: "les_aperitifs" },
-  { title: "Verre cognac", price: "$10.00", category: "les_aperitifs" },
-  { title: "Bouteille eau tonic", price: "$1.50", category: "les_aperitifs" },
-  { title: "Nuts", price: "$1.20", category: "les_aperitifs" }
-];
+      // Les Rafraîchissements
+      { title: "Ice Tea", price: "$2.00", category: "les_rafraichissements" },
+      { title: "Boissons gazeuses", price: "$1.75", category: "les_rafraichissements" },
+      { title: "Limonade", price: "$2.75", category: "les_rafraichissements" },
+      { title: "Jus", price: "$1.75", category: "les_rafraichissements" },
+      { title: "Eau gazeuse", price: "$2.00", category: "les_rafraichissements" },
+      { title: "Bière Almaza", price: "$2.50", category: "les_rafraichissements" },
+      { title: "Bière sans alcool", price: "$2.50", category: "les_rafraichissements" },
+      { title: "Bière Mexicaine", price: "$3.00", category: "les_rafraichissements" },
+      { title: "Bouteille eau tonic", price: "$1.50", category: "les_rafraichissements" },
+      
+      // Café
+      { title: "Nescafé", price: "$2.50", category: "cafe" },
+      { title: "Chocolat Chaud", price: "$3.25", category: "cafe" },
+      { title: "Espresso", price: "$2.50", category: "cafe" },
+      { title: "Cappuccino", price: "$3.00", category: "cafe" },
+      { title: "Café Turc", price: "$2.00", category: "cafe" },
+      { title: "Café Blanc", price: "$2.00", category: "cafe" },
+      { title: "Thé", price: "$1.75", category: "cafe" },
+      { title: "Infusion", price: "$2.00", category: "cafe" },
+      { title: "Bouteille eau grande", price: "$1.50", category: "cafe" },
+      { title: "Bouteille eau petite", price: "$1.00", category: "cafe" },
+      
+      // Arak
+      { title: "Bouteille spéciale", price: "$24.00", category: "arak" },
+      { title: "1/2 Bouteille spéciale", price: "$18.00", category: "arak" },
+      { title: "1/4 Bouteille spéciale", price: "$12.00", category: "arak" },
+      { title: "Verre d'arak Special", price: "$5.00", category: "arak" },
+      
+      // Les Vins Locaux
+      { title: "Rouge, Blanc, Rosé (La Bouteille)", price: "$16.00", category: "les_vins_locaux" },
+      { title: "Réserve du couvent", price: "$20.00", category: "les_vins_locaux" },
+      { title: "1/2 Bouteille", price: "$12.00", category: "les_vins_locaux" },
+      { title: "1/4 Bouteille", price: "$8.00", category: "les_vins_locaux" },
+      { title: "Verre de Vin", price: "$5.00", category: "les_vins_locaux" },
+      
+      // Les Apéritifs
+      { title: "Whisky Scotch (Verre)", price: "$5.00", category: "les_aperitifs" },
+      { title: "Whisky 1/2 Bouteille", price: "$30.00", category: "les_aperitifs" },
+      { title: "Whisky la Bouteille", price: "$48.00", category: "les_aperitifs" },
+      { title: "Whisky Scotch (Verre) (old)", price: "$7.00", category: "les_aperitifs" },
+      { title: "Whisky 1/2 Bouteille (old)", price: "$50.00", category: "les_aperitifs" },
+      { title: "Whisky la Bouteille (old)", price: "$75.00", category: "les_aperitifs" },
+      { title: "Verre Gin", price: "$4.50", category: "les_aperitifs" },
+      { title: "Verre Vodka", price: "$4.50", category: "les_aperitifs" },
+      { title: "Verre Gin Tonic", price: "$6.00", category: "les_aperitifs" },
+      { title: "Verre cognac", price: "$10.00", category: "les_aperitifs" },
+      { title: "Bouteille eau tonic", price: "$1.50", category: "les_aperitifs" },
+      { title: "Nuts", price: "$1.20", category: "les_aperitifs" },
+      { title: "Carottes", price: "$1.00", category: "les_aperitifs" }
+    ];
 
     const menuContainer = document.getElementById("menu");
 

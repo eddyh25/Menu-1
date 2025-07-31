@@ -40,12 +40,12 @@
     }
 
     .section-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
 
     .section-tabs button {
       background-color: #2a3b03;
@@ -78,14 +78,12 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      padding: 0 20px 40px;
+      padding: 20px;
     }
 
     @media (max-width: 768px) {
       .menu {
         grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 0 15px 40px;
       }
     }
 
@@ -119,109 +117,89 @@
       
       .item-title {
         font-size: 1em;
-        line-height: 1.3;
-      }
-      
-      .price {
-        font-size: 0.9em;
       }
     }
-  
 
     .logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
 
     .logo-img {
-  max-width: 560px;
-  height: 260px;
-  display: block;
-  margin: 0 auto;
-}
+      max-width: 560px;
+      height: 260px;
+      display: block;
+      margin: 0 auto;
+    }
 
-.footer {
-  background-color: #2a3b03;
-  color: #D6D4A9;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 40px;
-}
+    .footer {
+      background-color: #2a3b03;
+      color: #D6D4A9;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
 
-.footer .contact-info {
-  margin-bottom: 20px;
-}
+    .footer .contact-info {
+      margin-bottom: 20px;
+    }
 
-.footer .contact-info h3 {
-  color: #D6D4A9;
-  margin-bottom: 10px;
-  font-size: 1.1em;
-}
+    .footer .contact-info h3 {
+      color: #D6D4A9;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
 
-.footer .contact-info p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
+    .footer .contact-info p {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
 
-.footer .social-links {
-  margin-bottom: 15px;
-}
+    .footer .social-links {
+      margin-bottom: 15px;
+    }
 
-.footer .social-links a {
-  display: inline-block;
-  margin: 0 15px;
-  color: #D6D4A9;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    .footer .social-links a {
+      display: inline-block;
+      margin: 0 15px;
+      color: #D6D4A9;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-.footer .social-links a:hover {
-  color: #ffffff;
-}
+    .footer .social-links a:hover {
+      color: #ffffff;
+    }
 
-.footer p {
-  margin: 0;
-  font-size: 0.9em;
-}
+    .footer p {
+      margin: 0;
+      font-size: 0.9em;
+    }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 15px 10px;
-  }
-  
-  .footer .contact-info {
-    margin-bottom: 15px;
-  }
-  
-  .footer .contact-info h3 {
-    font-size: 1em;
-    margin-bottom: 8px;
-  }
-  
-  .footer .contact-info p {
-    font-size: 0.8em;
-    line-height: 1.4;
-    margin: 3px 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-  
-  .footer .social-links {
-    margin-bottom: 10px;
-  }
-  
-  .footer .social-links a {
-    margin: 0 10px;
-  }
-  
-  .footer p {
-    font-size: 0.8em;
-  }
-}
-
-</style>
+    @media (max-width: 768px) {
+      .footer {
+        padding: 15px 10px;
+      }
+      
+      .footer .contact-info {
+        margin-bottom: 15px;
+      }
+      
+      .footer .contact-info h3 {
+        font-size: 1em;
+      }
+      
+      .footer .contact-info p {
+        font-size: 0.8em;
+      }
+      
+      .footer .social-links a {
+        margin: 0 10px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -230,7 +208,6 @@
     <button onclick="window.location.href='about.html'">About</button>
   </header>
 
-  
   <div class="logo-container">
     <img src="logo_transparent.png" alt="Grand Hôtel Logo" class="logo-img" />
   </div>
@@ -244,46 +221,14 @@
       <img src="https://img.icons8.com/ios-filled/50/ffffff/cocktail.png" alt="Beverages Icon" />
       Beverages
     </button>
-    <button class="active" onclick="window.location.href='dessert.html'">
+    <button class="active">
       <img src="https://img.icons8.com/ios-filled/50/ffffff/cake.png" alt="Dessert Icon" />
       Dessert
     </button>
   </div>
 
-  <div class="menu">
-
-    <div class="item">
-      <div class="item-title">Pain perdu (2prs)<span class="price">$12.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Brownies<span class="price">$8.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Fondant au chocolat<span class="price">$10.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Tarte aux citron<span class="price">$7.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Cake (Vanille - Chocolat)<span class="price">$5.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Cheese cake glace<span class="price">$10.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Lazy cake<span class="price">$6.00</span></div>
-    </div>
-    
-    <div class="item">
-      <div class="item-title">Boule de glace<span class="price">$1.50</span></div>
-    </div>
-    
+  <div class="menu" id="menu">
+    <!-- Dessert items will be inserted here by JavaScript -->
   </div>
 
   <footer class="footer">
@@ -300,11 +245,40 @@
       </a>
       <a href="https://www.instagram.com/grandhotelboisdeboulogne/?hl=en" target="_blank" title="Follow us on Instagram">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
         </svg>
       </a>
     </div>
     <p>&copy; 2025 Grand Hôtel Bois de Boulogne. All rights reserved.</p>
   </footer>
+
+  <script>
+    const menuItems = [
+      { title: "Pain perdu (2prs)", price: "$12.00", category: "dessert" },
+      { title: "Brownies", price: "$8.00", category: "dessert" },
+      { title: "Fondant au chocolat", price: "$10.00", category: "dessert" },
+      { title: "Tarte aux citron", price: "$7.00", category: "dessert" },
+      { title: "Cake (Vanille - Chocolat)", price: "$5.00", category: "dessert" },
+      { title: "Cheese cake glace", price: "$10.00", category: "dessert" },
+      { title: "Lazy cake", price: "$6.00", category: "dessert" },
+      { title: "Boule de glace", price: "$1.50", category: "dessert" }
+    ];
+
+    const menuContainer = document.getElementById("menu");
+
+    function renderMenu() {
+      menuContainer.innerHTML = "";
+      menuItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div class="item-title">${item.title}<span class="price">${item.price}</span></div>
+        `;
+        menuContainer.appendChild(div);
+      });
+    }
+
+    renderMenu();
+  </script>
 </body>
 </html>
