@@ -135,7 +135,7 @@
     }
 
     .price {
-      color: red;
+      color: #b71a1a;
       font-weight: bold;
       white-space: nowrap;
       flex-shrink: 0;
@@ -248,7 +248,39 @@
         font-size: 0.8em;
       }
     }
-  </style>
+  
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .search-bar input {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      border: 2px solid #2a3b03;
+      border-radius: 25px;
+      font-size: 1em;
+      font-family: 'Georgia', serif;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: #384e04;
+    }
+
+    .no-results {
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      font-size: 1em;
+      margin-top: 10px;
+      display: none;
+    }
+
+</style>
 </head>
 <body>
   <header>
@@ -284,6 +316,13 @@
     <button class="filter-btn" data-category="les_vins_locaux">Les Vins Locaux</button>
     <button class="filter-btn" data-category="les_aperitifs">Les Apéritifs</button>
   </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search menu items...">
+  </div>
+
+
+  <div id="noResultsMessage" class="no-results">No results found</div>
 
   <div class="menu" id="menu"></div>
 
@@ -385,6 +424,19 @@
     });
 
     renderMenu("all");
+  
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const query = this.value.toLowerCase();
+      let found = false;
+      document.querySelectorAll("#menu .item").forEach(item => {
+        const title = item.querySelector(".item-title").innerText.toLowerCase();
+        const match = title.includes(query);
+        item.style.display = match ? "block" : "none";
+        if (match) found = true;
+      });
+      document.getElementById("noResultsMessage").style.display = found ? "none" : "block";
+    });
+
   </script>
 </body>
 </html>
