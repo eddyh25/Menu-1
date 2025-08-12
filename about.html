@@ -16,7 +16,7 @@
       background-color: #fef7ec;
     }
 
-    /* Navigation - original style */
+    /* Navigation - keep original */
     .nav-header {
       background-color: #2a3b03;
       padding: 10px;
@@ -25,7 +25,6 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-
     .nav-header button {
       background-color: #2a3b03;
       color: #D6D4A9;
@@ -38,22 +37,19 @@
       transition: background-color 0.3s ease;
       white-space: nowrap;
     }
-
     .nav-header button:hover {
       background-color: #384e04;
     }
 
-    /* Header */
+    /* Header - keep original */
     header {
       text-align: center;
       padding: 40px 20px 30px;
     }
-
     header img {
       max-width: 180px;
       margin-bottom: 10px;
     }
-
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 2.4em;
@@ -61,70 +57,96 @@
       margin: 10px 0 0;
     }
 
-    /* Main Content */
+    /* Main content - improved styling */
     .main-content {
       max-width: 1000px;
       margin: 0 auto;
       padding: 0 20px 50px;
     }
-
     section {
       background: #fff;
-      padding: 25px;
+      padding: 30px;
       margin-bottom: 35px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e6e0d3;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
     section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6em;
+      font-size: 1.8em;
       color: #8b0000;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       border-bottom: 2px solid #e5d8c0;
-      padding-bottom: 5px;
+      padding-bottom: 6px;
+    }
+
+    /* Make Guest Rooms title auto-fit on one line */
+    #guest-rooms-title {
+      white-space: nowrap;
+      font-size: clamp(1.2em, 4vw, 1.8em);
     }
 
     section p {
-      margin: 10px 0;
-      font-size: 1em;
+      margin: 12px 0;
+      font-size: 1.05em;
       color: #444;
     }
 
-    /* Amenities Grid with icons */
+    /* Amenities grid - refined look */
     .amenities-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 12px 30px;
-      margin: 15px 0 25px;
+      gap: 15px 30px;
+      margin: 20px 0 25px;
     }
-
     .amenity {
       display: flex;
       align-items: center;
       font-size: 1em;
       color: #444;
-      gap: 10px;
+      gap: 12px;
+      background: #faf7f0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #e6e0d3;
+      transition: background-color 0.3s ease;
     }
-
+    .amenity:hover {
+      background-color: #f4efe4;
+    }
     .amenity i {
       color: #8b0000;
-      font-size: 1.1em;
-      min-width: 20px;
+      font-size: 1.2em;
+      min-width: 22px;
     }
 
-    /* Testimonials */
+    /* Testimonials - refined style */
     .testimonial {
-      background: #f9f9f9;
+      background: linear-gradient(135deg, #faf7f0, #fff);
       border-left: 4px solid #8b0000;
-      padding: 15px;
+      padding: 18px;
       margin: 20px 0;
       font-style: italic;
       color: #555;
-      border-radius: 5px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 3em;
+      color: #8b0000;
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      opacity: 0.2;
     }
 
-    /* Footer */
+    /* Footer - keep original */
     .footer {
       background-color: #2a3b03;
       color: #D6D4A9;
@@ -132,26 +154,21 @@
       padding: 20px 0;
       margin-top: 40px;
     }
-
     .footer .contact-info {
       margin-bottom: 20px;
     }
-
     .footer .contact-info h3 {
       color: #D6D4A9;
       margin-bottom: 10px;
       font-size: 1.1em;
     }
-
     .footer .contact-info p {
       margin: 5px 0;
       font-size: 0.9em;
     }
-
     .footer .social-links {
       margin-bottom: 15px;
     }
-
     .footer .social-links a {
       display: inline-block;
       margin: 0 15px;
@@ -159,22 +176,21 @@
       text-decoration: none;
       transition: color 0.3s ease;
     }
-
     .footer .social-links a:hover {
       color: #ffffff;
     }
-
     .footer p {
       margin: 0;
       font-size: 0.9em;
     }
 
+    /* Mobile adjustments */
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.9em;
       }
       section h2 {
-        font-size: 1.4em;
+        font-size: 1.5em;
       }
       .footer p {
         font-size: 0.8em;
@@ -198,7 +214,7 @@
     <section>
       <h2>Welcome</h2>
       <p>
-        Nestled in pine‑forested grounds of around 24,000 m² in Dhour El Choueir at approximately 1,200 m elevation, 
+        Nestled in pine-forested grounds of around 24,000 m² in Dhour El Choueir at approximately 1,200 m elevation, 
         <strong>Grand Hôtel Bois de Boulogne</strong> offers a peaceful mountain escape just 30–40 km from Beirut and the international airport. 
         Conveniently located between Beirut and the Bekaa Valley, it is only 8 km from Zaarour ski slopes.
       </p>
@@ -213,7 +229,7 @@
     </section>
 
     <section>
-      <h2>Guest Rooms & Accommodation</h2>
+      <h2 id="guest-rooms-title">Guest Rooms & Accommodation</h2>
       <p>
         The hotel features 78–100 guest rooms and 12 suites/apartments, some with separate living spaces or kitchens—ideal for families or long stays. 
         Guests particularly appreciate the quiet atmosphere, spacious rooms, and comfortable beds.
@@ -223,9 +239,9 @@
     <section>
       <h2>Amenities & Facilities</h2>
       <div class="amenities-grid">
-        <div class="amenity"><i class="fas fa-wifi"></i> Free Wi‑Fi throughout the property</div>
-        <div class="amenity"><i class="fas fa-concierge-bell"></i> 24‑hour reception & concierge service</div>
-        <div class="amenity"><i class="fas fa-utensils"></i> On‑site restaurant & Sunday brunch</div>
+        <div class="amenity"><i class="fas fa-wifi"></i> Free Wi-Fi throughout the property</div>
+        <div class="amenity"><i class="fas fa-concierge-bell"></i> 24-hour reception & concierge service</div>
+        <div class="amenity"><i class="fas fa-utensils"></i> On-site restaurant & Sunday brunch</div>
         <div class="amenity"><i class="fas fa-glass-martini-alt"></i> Cozy bar/lounge with fireplace</div>
         <div class="amenity"><i class="fas fa-child"></i> Children's playground (ages 3–10)</div>
         <div class="amenity"><i class="fas fa-briefcase"></i> Business centre & meeting room</div>
