@@ -14,13 +14,12 @@
       padding: 0;
       color: #333;
       background-color: #fef7ec;
-      touch-action: manipulation; /* Improves touch responsiveness */
     }
 
     /* Original Navigation */
     .nav-header {
       background-color: #2a3b03;
-      padding: 12px;
+      padding: 10px;
       display: flex;
       justify-content: center;
       gap: 10px;
@@ -42,10 +41,10 @@
       background-color: #384e04;
     }
 
-    /* Sticky Header - initially hidden */
+    /* Sticky Header */
     .sticky-header {
       position: fixed;
-      top: -60px;
+      top: -70px;
       left: 0;
       right: 0;
       background-color: #2a3b03;
@@ -72,14 +71,13 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 70%;
+      max-width: 70vw;
     }
 
-    /* Dropdown Menu */
+    /* Dropdown Menu Fix */
     .dropdown {
       position: relative;
       display: inline-block;
-      z-index: 1001;
     }
 
     .dropbtn {
@@ -90,33 +88,24 @@
       font-size: 1.1em;
       cursor: pointer;
       transition: all 0.3s ease;
-      -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile */
+      border-radius: 5px;
     }
 
-    .dropbtn:focus {
-      outline: none;
+    .dropbtn:hover {
+      background-color: rgba(214, 212, 169, 0.1);
     }
 
     .dropdown-content {
-      display: block;
+      display: none;
       position: absolute;
       background-color: #2a3b03;
-      min-width: 160px;
+      min-width: 180px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
-      border-radius: 0 0 5px 5px;
+      border-radius: 8px;
       overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.3s ease, opacity 0.2s ease;
-      transform-origin: top;
-      left: 0;
       top: 100%;
-    }
-
-    .dropdown-content.show {
-      max-height: 300px;
-      opacity: 1;
+      left: 0;
     }
 
     .dropdown-content a {
@@ -124,27 +113,26 @@
       padding: 12px 16px;
       text-decoration: none;
       display: block;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
       font-size: 0.95em;
+      border-bottom: 1px solid rgba(214, 212, 169, 0.1);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
     }
 
     .dropdown-content a:hover {
       background-color: #384e04;
+      padding-left: 20px;
     }
 
-    /* Overlay for closing dropdown when clicking outside */
-    .dropdown-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: transparent;
-      z-index: 1000;
-      display: none;
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
-    /* Header - keep original */
+    /* Header */
     header {
       text-align: center;
       padding: 40px 20px 30px;
@@ -160,7 +148,7 @@
       margin: 10px 0 0;
     }
 
-    /* Main content - improved styling */
+    /* Main content */
     .main-content {
       max-width: 1000px;
       margin: 0 auto;
@@ -188,7 +176,7 @@
       padding-bottom: 6px;
     }
 
-    /* Make Guest Rooms title auto-fit on one line */
+    /* Guest Rooms title auto-fit */
     #guest-rooms-title {
       white-space: nowrap;
       font-size: clamp(1.2em, 4vw, 1.8em);
@@ -200,7 +188,7 @@
       color: #444;
     }
 
-    /* Amenities grid - refined look */
+    /* Amenities grid */
     .amenities-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -228,7 +216,7 @@
       min-width: 22px;
     }
 
-    /* Testimonials - refined style */
+    /* Testimonials */
     .testimonial {
       background: linear-gradient(135deg, #faf7f0, #fff);
       border-left: 4px solid #8b0000;
@@ -249,7 +237,7 @@
       opacity: 0.2;
     }
 
-    /* Footer - keep original */
+    /* Footer */
     .footer {
       background-color: #2a3b03;
       color: #D6D4A9;
@@ -290,8 +278,8 @@
     /* Mobile adjustments */
     @media (max-width: 768px) {
       .sticky-header {
-        height: 48px;
-        padding: 10px 15px;
+        height: 50px;
+        padding: 12px 15px;
       }
       .hotel-name {
         font-size: 1.1em;
@@ -306,7 +294,7 @@
         font-size: 0.8em;
       }
       .dropdown-content {
-        min-width: 140px;
+        min-width: 160px;
       }
     }
   </style>
@@ -319,22 +307,20 @@
     <button onclick="window.location.href='about.html'">About</button>
   </div>
 
-  <!-- New Sticky Header (initially hidden) -->
+  <!-- Sticky Header -->
   <div class="sticky-header" id="stickyHeader">
     <div class="dropdown">
-      <button class="dropbtn" id="menuButton"><i class="fas fa-bars"></i></button>
-      <div class="dropdown-content" id="dropdownMenu">
+      <button class="dropbtn"><i class="fas fa-bars"></i></button>
+      <div class="dropdown-content">
+        <a href="index.html">Home</a>
         <a href="food.html">Menu</a>
         <a href="feedback.html">Feedback</a>
         <a href="about.html">About</a>
       </div>
     </div>
     <h1 class="hotel-name">Grand Hôtel Bois de Boulogne</h1>
-    <div></div> <!-- Empty div for alignment -->
+    <div></div>
   </div>
-
-  <!-- Overlay for closing dropdown -->
-  <div class="dropdown-overlay" id="dropdownOverlay"></div>
 
   <div class="main-content">
     <header>
@@ -437,50 +423,6 @@
         stickyHeader.classList.add('visible');
       } else {
         stickyHeader.classList.remove('visible');
-      }
-    });
-
-    // Dropdown menu functionality
-    const menuButton = document.getElementById('menuButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const dropdownOverlay = document.getElementById('dropdownOverlay');
-    let isMenuOpen = false;
-
-    function toggleMenu() {
-      isMenuOpen = !isMenuOpen;
-      if (isMenuOpen) {
-        dropdownMenu.classList.add('show');
-        dropdownOverlay.style.display = 'block';
-      } else {
-        dropdownMenu.classList.remove('show');
-        dropdownOverlay.style.display = 'none';
-      }
-    }
-
-    function closeMenu() {
-      isMenuOpen = false;
-      dropdownMenu.classList.remove('show');
-      dropdownOverlay.style.display = 'none';
-    }
-
-    menuButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    dropdownOverlay.addEventListener('click', closeMenu);
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (isMenuOpen && !dropdownMenu.contains(e.target) && e.target !== menuButton) {
-        closeMenu();
-      }
-    });
-
-    // Close menu when scrolling
-    window.addEventListener('scroll', function() {
-      if (isMenuOpen) {
-        closeMenu();
       }
     });
   </script>
