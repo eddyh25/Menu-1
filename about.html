@@ -29,7 +29,7 @@
       background-color: #2a3b03;
       color: #D6D4A9;
       border: 2px solid #D6D4A9;
-      padding: 8px 16px;
+      padding: 8px 16px; /* Original size */
       font-family: 'Georgia', serif;
       font-size: 0.9em;
       cursor: pointer;
@@ -84,7 +84,7 @@
       background-color: transparent;
       color: #D6D4A9;
       border: none;
-      padding: 8px 12px;
+      padding: 8px 12px; /* Original size */
       font-size: 1.1em;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -99,18 +99,18 @@
       display: none;
       position: absolute;
       background-color: #2a3b03;
-      min-width: 180px;
+      min-width: 180px; /* Original width */
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       border-radius: 8px;
       overflow: hidden;
       top: 100%;
-      left: 0;
+      left: 0; /* Original position */
     }
 
     .dropdown-content a {
       color: #D6D4A9;
-      padding: 12px 16px;
+      padding: 12px 16px; /* Original size */
       text-decoration: none;
       display: block;
       transition: all 0.3s ease;
@@ -310,8 +310,8 @@
   <!-- Sticky Header -->
   <div class="sticky-header" id="stickyHeader">
     <div class="dropdown">
-      <button class="dropbtn"><i class="fas fa-bars"></i></button>
-      <div class="dropdown-content">
+      <button class="dropbtn" id="menuButton"><i class="fas fa-bars"></i></button>
+      <div class="dropdown-content" id="dropdownMenu">
         <a href="index.html">Home</a>
         <a href="food.html">Menu</a>
         <a href="feedback.html">Feedback</a>
@@ -424,6 +424,27 @@
       } else {
         stickyHeader.classList.remove('visible');
       }
+    });
+
+    // Dropdown menu auto-close when clicking outside
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking anywhere else
+    document.addEventListener('click', function() {
+      if (dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
+      }
+    });
+
+    // Prevent dropdown from closing when clicking inside it
+    dropdownMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
     });
   </script>
 </body>
