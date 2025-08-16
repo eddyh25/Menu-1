@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +60,6 @@
       cursor: pointer;
       transition: color 0.3s;
     }
-    .stars span.hover,
     .stars span.selected {
       color: #f4b400;
     }
@@ -101,16 +99,16 @@
     <h2>We appreciate your comments</h2>
     <p>Rate your experience</p>
     <div class="stars" id="star-container">
-      <span data-value="1">&#9733;</span>
-      <span data-value="2">&#9733;</span>
-      <span data-value="3">&#9733;</span>
-      <span data-value="4">&#9733;</span>
-      <span data-value="5">&#9733;</span>
+      <span data-value="1" aria-label="1 star">&#9733;</span>
+      <span data-value="2" aria-label="2 stars">&#9733;</span>
+      <span data-value="3" aria-label="3 stars">&#9733;</span>
+      <span data-value="4" aria-label="4 stars">&#9733;</span>
+      <span data-value="5" aria-label="5 stars">&#9733;</span>
     </div>
     <form action="https://formsubmit.co/eddyhoueiss@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Customer Feedback!" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://eddyh25.github.io/menu/thankyou.html" />
+      <input type="hidden" name="_next" value="http://localhost:51951/thankyou.html?phcodeLivePreview=true" />
       <input type="hidden" name="rating" id="rating-input" />
       <textarea name="comment" rows="5" placeholder="Your Comments.." required></textarea>
       <input type="text" name="name" placeholder="Full Name" required />
@@ -145,5 +143,4 @@
   }
 </script>
 </body>
-
 </html>
