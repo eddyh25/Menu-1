@@ -95,6 +95,27 @@
       background-color: rgba(214, 212, 169, 0.1);
     }
 
+    .dropbtn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: #D6D4A9;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .dropbtn.open span:nth-child(1) {
+      transform: rotate(-45deg) translate(-4px, 5px);
+    }
+
+    .dropbtn.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .dropbtn.open span:nth-child(3) {
+      transform: rotate(45deg) translate(-4px, -5px);
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
@@ -316,7 +337,11 @@
   <!-- Sticky Header -->
   <div class="sticky-header" id="stickyHeader">
     <div class="dropdown">
-      <button class="dropbtn" id="menuButton" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      <button class="dropbtn" id="menuButton" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="dropdown-content" id="dropdownMenu">
         <a href="index.html">Home</a>
         <a href="food.html">Menu</a>
@@ -440,6 +465,7 @@
       e.stopPropagation();
       const willShow = !dropdownMenu.classList.contains('show');
       dropdownMenu.classList.toggle('show');
+      menuButton.classList.toggle('open');
       menuButton.setAttribute('aria-expanded', willShow ? 'true' : 'false');
     });
 
@@ -447,6 +473,7 @@
     document.addEventListener('click', function() {
       if (dropdownMenu.classList.contains('show')) {
         dropdownMenu.classList.remove('show');
+        menuButton.classList.remove('open');
         menuButton.setAttribute('aria-expanded', 'false');
       }
     });
