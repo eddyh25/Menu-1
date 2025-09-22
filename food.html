@@ -92,21 +92,27 @@
     }
 
     .dropdown-content {
-      display: none;
+      display: block;
       position: absolute;
       background-color: #2a3b03;
-      min-width: 180px; /* Original width */
+      min-width: 180px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       border-radius: 8px;
       overflow: hidden;
-      top: 100%;
-      left: 0; /* Original position */
+      top: calc(100% + 5px);
+      right: 0; 
+      left: auto;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      visibility: hidden;
     }
 
-    /* ✅ Added: make JS toggle work */
     .dropdown-content.show {
-      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
     }
 
     .dropdown-content a {
