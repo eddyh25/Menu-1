@@ -4,37 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Feedback</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #fef7ec;
-      margin: 0;
-      padding: 0;
-      color: #2a3b03;
-    }
-    header {
-      background-color: #2a3b03;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    header button {
-      background-color: #2a3b03;
-      color: #D6D4A9;
-      border: 2px solid #D6D4A9;
-      padding: 8px 16px;
-      font-family: 'Georgia', serif;
-      font-size: 0.9em;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      white-space: nowrap;
-    }
-    header button:hover {
-      background-color: #384e04;
-    }
+    /* Additional styles for feedback page */
     .feedback-container {
       padding: 40px 20px;
       max-width: 500px;
@@ -89,11 +61,24 @@
   </style>
 </head>
 <body>
-  <header>
-    <button onclick="window.location.href='food.html'">Menu</button>
-    <button onclick="window.location.href='feedback.html'">Feedback</button>
-    <button onclick="window.location.href='about.html'">About</button>
-  </header>
+  <!-- Sticky Header -->
+  <div class="sticky-header" id="stickyHeader">
+    <div class="dropdown">
+      <button class="dropbtn" id="menuButton" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="dropdown-content" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="food.html">Menu</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <h1 class="hotel-name">Grand Hôtel Bois de Boulogne</h1>
+    <div></div>
+  </div>
 
   <div class="feedback-container">
     <h2>We appreciate your comments</h2>
@@ -118,6 +103,20 @@
   </div>
 
 <script>
+  // Fade out effect
+  document.querySelectorAll('a, button[onclick]').forEach(el => {
+    el.addEventListener('click', function(e) {
+      const href = this.href || (this.onclick.toString().match(/window\.location\.href=\'(.*)\'/) || [])[1];
+      if (href && !this.target) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 500);
+      }
+    });
+  });
+
   const stars = document.querySelectorAll('#star-container span');
   const ratingInput = document.getElementById('rating-input');
   let selectedRating = 0;
@@ -141,6 +140,37 @@
       star.classList.toggle('selected', i < rating);
     });
   }
+
+  // Show/hide sticky header on scroll
+  window.addEventListener('scroll', function() {
+    const stickyHeader = document.getElementById('stickyHeader');
+    if (window.scrollY > 100) {
+      stickyHeader.classList.add('visible');
+    } else {
+      stickyHeader.classList.remove('visible');
+    }
+  });
+
+  // Dropdown menu click toggle + outside click close
+  const menuButton = document.getElementById('menuButton');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+
+  menuButton.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const willShow = !dropdownMenu.classList.contains('show');
+    dropdownMenu.classList.toggle('show');
+    menuButton.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', willShow ? 'true' : 'false');
+  });
+
+  // Close dropdown when clicking anywhere else
+  document.addEventListener('click', function() {
+    if (dropdownMenu.classList.contains('show')) {
+      dropdownMenu.classList.remove('show');
+      menuButton.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }
+  });
 </script>
 </body>
 </html>
