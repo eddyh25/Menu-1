@@ -183,7 +183,7 @@
     .main-content {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px 50px;
+      padding: 0 20px 60rem;
     }
     section {
       background: #fff;
@@ -192,11 +192,17 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
       border: 1px solid #e6e0d3;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: box-shadow 0.2s ease;
     }
     section:hover {
-      transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .scroll-stack-card {
+      transform-origin: top center;
+      will-change: transform;
+      backface-visibility: hidden;
+      position: relative;
     }
     section h2 {
       font-family: 'Playfair Display', serif;
@@ -363,7 +369,7 @@
       <h1>About Grand Hôtel Bois de Boulogne</h1>
     </header>
 
-    <section>
+    <section class="scroll-stack-card">
       <h2>Welcome</h2>
       <p>
         Nestled in pine-forested grounds of around 24,000 m² in Dhour El Choueir at approximately 1,200 m elevation, 
@@ -372,7 +378,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="scroll-stack-card">
       <h2>History & Character</h2>
       <p>
         Established in the 1930s and later renovated, the hotel blends classic elegance with modern comfort. 
@@ -380,7 +386,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="scroll-stack-card">
       <h2 id="guest-rooms-title">Guest Rooms & Accommodation</h2>
       <p>
         The hotel features 78–100 guest rooms and 12 suites/apartments, some with separate living spaces or kitchens—ideal for families or long stays. 
@@ -388,7 +394,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="scroll-stack-card">
       <h2>Amenities & Facilities</h2>
       <div class="amenities-grid">
         <div class="amenity"><i class="fas fa-wifi"></i> Free Wi-Fi throughout the property</div>
@@ -407,7 +413,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="scroll-stack-card">
       <h2>Guest Experience</h2>
       <div class="testimonial">
         "This is an excellent hotel with great value for money! Absolutely beautiful lobby… staff are extremely nice… a family business where you feel you belong."<br>
@@ -419,7 +425,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="scroll-stack-card">
       <h2>Location & Contact</h2>
       <p>
         <strong>Address:</strong> Main Road of Bois de Boulogne, Dhour El Choueir 1204, Mount Lebanon, Lebanon<br>
@@ -427,6 +433,7 @@
         The hotel overlooks peaceful pine forests in the scenic Bois de Boulogne area—ideal for a relaxing escape.
       </p>
     </section>
+    <div class="scroll-stack-end"></div>
   </div>
 
   <footer class="footer">
@@ -450,7 +457,64 @@
     <p>&copy; 2025 Grand Hôtel Bois de Boulogne. All rights reserved.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script>
+    // ScrollStack card animation driven by Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 2,
+      infinite: false,
+      wheelMultiplier: 1,
+      lerp: 0.1,
+      syncTouch: true,
+      syncTouchLerp: 0.075
+    });
+
+    function updateScrollStack() {
+      const cards = document.querySelectorAll('.scroll-stack-card');
+      const endElement = document.querySelector('.scroll-stack-end');
+      if (!cards.length) return;
+
+      const scrollTop = window.scrollY;
+      const containerHeight = window.innerHeight;
+      const stackPositionPx = 0.20 * containerHeight;
+      const scaleEndPositionPx = 0.10 * containerHeight;
+      const endElementTop = endElement ? endElement.getBoundingClientRect().top + scrollTop : 0;
+      const pinEnd = endElementTop - containerHeight / 2;
+
+      cards.forEach((card, i) => {
+        const cardTop = card.getBoundingClientRect().top + scrollTop;
+        const triggerStart = cardTop - stackPositionPx - 30 * i;
+        const triggerEnd = cardTop - scaleEndPositionPx;
+        let scaleProgress = (scrollTop - triggerStart) / (triggerEnd - triggerStart);
+        scaleProgress = Math.max(0, Math.min(1, scaleProgress));
+        const targetScale = 0.85 + 0.03 * i;
+        const scale = 1 - scaleProgress * (1 - targetScale);
+
+        const pinStart = triggerStart;
+        let translateY = 0;
+        if (scrollTop >= pinStart && scrollTop <= pinEnd) {
+          translateY = scrollTop - cardTop + stackPositionPx + 30 * i;
+        } else if (scrollTop > pinEnd) {
+          translateY = pinEnd - cardTop + stackPositionPx + 30 * i;
+        }
+
+        card.style.transform = `translate3d(0, ${Math.round(translateY * 100) / 100}px, 0) scale(${Math.round(scale * 1000) / 1000})`;
+      });
+    }
+
+    lenis.on('scroll', updateScrollStack);
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    updateScrollStack();
+
     // Show/hide sticky header on scroll
     window.addEventListener('scroll', function() {
       const stickyHeader = document.getElementById('stickyHeader');
