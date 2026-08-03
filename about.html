@@ -202,6 +202,7 @@
       transform-origin: top center;
       will-change: transform;
       backface-visibility: hidden;
+      transform-style: preserve-3d;
       position: relative;
     }
     section h2 {
@@ -472,6 +473,14 @@
       syncTouchLerp: 0.075
     });
 
+    const stackCards = Array.from(document.querySelectorAll('.scroll-stack-card'));
+    stackCards.forEach((card, i) => {
+      card.style.zIndex = String(i + 1);
+      card.style.transform = 'translateZ(0)';
+    });
+
+    const lastTransforms = new Map();
+
     function updateScrollStack() {
       const cards = document.querySelectorAll('.scroll-stack-card');
       const endElement = document.querySelector('.scroll-stack-end');
@@ -501,7 +510,13 @@
           translateY = pinEnd - cardTop + stackPositionPx + 30 * i;
         }
 
-        card.style.transform = `translate3d(0, ${Math.round(translateY * 100) / 100}px, 0) scale(${Math.round(scale * 1000) / 1000})`;
+        const y = Math.round(translateY * 100) / 100;
+        const s = Math.round(scale * 1000) / 1000;
+        const key = y + '|' + s;
+        if (lastTransforms.get(i) !== key) {
+          card.style.transform = `translate3d(0, ${y}px, 0) scale(${s})`;
+          lastTransforms.set(i, key);
+        }
       });
     }
 
