@@ -664,9 +664,12 @@
       if (observer) observer.disconnect();
       observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          entry.target.classList.toggle("in-view", entry.isIntersecting);
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
         });
-      }, { threshold: 0.01, rootMargin: "0px 0px -5% 0px" });
+      }, { threshold: 0.01, rootMargin: "0px 0px 15% 0px" });
       document.querySelectorAll(".menu .item").forEach(el => observer.observe(el));
     }
 
@@ -677,7 +680,7 @@
         .forEach((item, index) => {
           const div = document.createElement("div");
           div.className = "item";
-          div.style.transitionDelay = Math.min(index * 0.04, 0.4) + "s";
+          div.style.transitionDelay = Math.min(index * 0.03, 0.3) + "s";
           div.innerHTML = `<div class="item-title">${item.title}<span class="price">${item.price}</span></div>`;
           menuContainer.appendChild(div);
         });
