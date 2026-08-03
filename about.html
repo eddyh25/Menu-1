@@ -202,7 +202,6 @@
       transform-origin: top center;
       will-change: transform;
       backface-visibility: hidden;
-      transform-style: preserve-3d;
       position: relative;
     }
     section h2 {
@@ -494,7 +493,9 @@
       const pinEnd = endElementTop - containerHeight / 2;
 
       cards.forEach((card, i) => {
-        const cardTop = card.getBoundingClientRect().top + scrollTop;
+        const prev = lastTransforms.get(i);
+        const prevY = prev ? prev.y : 0;
+        const cardTop = card.getBoundingClientRect().top + scrollTop - prevY;
         const triggerStart = cardTop - stackPositionPx - 30 * i;
         const triggerEnd = cardTop - scaleEndPositionPx;
         let scaleProgress = (scrollTop - triggerStart) / (triggerEnd - triggerStart);
@@ -512,18 +513,16 @@
 
         const y = Math.round(translateY * 100) / 100;
         const s = Math.round(scale * 1000) / 1000;
-        const key = y + '|' + s;
-        if (lastTransforms.get(i) !== key) {
+        if (!prev || prev.y !== y || prev.s !== s) {
           card.style.transform = `translate3d(0, ${y}px, 0) scale(${s})`;
-          lastTransforms.set(i, key);
+          lastTransforms.set(i, { y, s });
         }
       });
     }
 
-    lenis.on('scroll', updateScrollStack);
-
     function raf(time) {
       lenis.raf(time);
+      updateScrollStack();
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
