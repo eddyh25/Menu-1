@@ -664,10 +664,7 @@
       if (observer) observer.disconnect();
       observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            observer.unobserve(entry.target);
-          }
+          entry.target.classList.toggle("in-view", entry.isIntersecting);
         });
       }, { threshold: 0.01, rootMargin: "0px 0px 15% 0px" });
       document.querySelectorAll(".menu .item").forEach(el => observer.observe(el));
