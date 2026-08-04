@@ -13,125 +13,230 @@ body.fade-out {
   opacity: 0;
 }
 
-/* Sticky Header */
-.sticky-header {
+/* Sticky Header - Card Navigation */
+.sticky-header.card-nav-container {
   position: fixed;
   top: -70px;
-  left: 0;
-  right: 0;
-  background-color: #2a3b03;
-  color: #D6D4A9;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1000px;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: top 0.3s ease;
-  height: 50px;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  height: auto;
 }
 
 .sticky-header.visible {
+  top: 1rem;
+}
+
+.card-nav {
+  display: block;
+  height: 60px;
+  padding: 0;
+  background-color: #2a3b03;
+  border: 0.5px solid rgba(214, 212, 169, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  will-change: height;
+}
+
+.card-nav-top {
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 2;
+  line-height: 1;
+}
+
+.hamburger-menu {
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 6px;
+  padding: 0;
+}
+
+.hamburger-menu:hover .hamburger-line {
+  opacity: 0.75;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 2px;
+  background-color: #D6D4A9;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 .hotel-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3em;
+  font-size: 1.2em;
+  font-weight: 600;
   margin: 0;
+  padding: 0;
   color: #D6D4A9;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 70vw;
-}
-
-/* Dropdown Menu */
-.dropdown {
-  position: relative;
+  line-height: 1;
   display: inline-block;
 }
 
-.dropbtn {
-  background-color: transparent;
-  color: #D6D4A9;
-  border: none;
-  padding: 8px 12px;
-  /* Original size */
-  font-size: 1.1em;
+.card-nav-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 12px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-nav.open .card-nav-content {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-card {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: calc(0.75rem - 0.2rem);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: #2a3b03;
+  border: 1px solid rgba(214, 212, 169, 0.15);
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 5px;
+  user-select: none;
 }
 
-.dropbtn:hover {
-  background-color: rgba(214, 212, 169, 0.1);
-}
-
-.dropbtn span {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: #D6D4A9;
-  margin: 4px 0;
-  transition: 0.4s;
-}
-
-.dropbtn.open span:nth-child(1) {
-  transform: rotate(-45deg) translate(-4px, 5px);
-}
-
-.dropbtn.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.dropbtn.open span:nth-child(3) {
-  transform: rotate(45deg) translate(-4px, -5px);
-}
-
-.dropdown-content {
-  display: block;
-  position: absolute;
-  background-color: #2a3b03;
-  min-width: 180px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  top: calc(100% + 5px);
-  left: 0;
-  right: auto;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  visibility: hidden;
-}
-
-.dropdown-content.show {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.dropdown-content a {
-  color: #D6D4A9;
-  padding: 12px 16px;
-  /* Original size */
-  text-decoration: none;
-  display: block;
-  transition: all 0.3s ease;
-  font-size: 0.95em;
-  border-bottom: 1px solid rgba(214, 212, 169, 0.1);
-  font-family: 'Roboto', sans-serif;
-}
-
-.dropdown-content a:last-child {
-  border-bottom: none;
-}
-
-.dropdown-content a:hover {
+.nav-card:hover {
   background-color: #384e04;
-  padding-left: 20px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-card-link {
+  color: #D6D4A9;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 100%;
+  padding: 12px 16px;
+}
+
+.nav-card-link::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.nav-card:hover .nav-card-link::after {
+  transform: rotate(45deg) translate(3px, -3px);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .sticky-header.card-nav-container {
+    width: 95%;
+    top: -80px;
+  }
+  
+  .sticky-header.visible {
+    top: 0.5rem;
+  }
+  
+  .card-nav-top {
+    padding: 0.5rem 1rem;
+  }
+  
+  .hamburger-menu {
+    left: 1rem;
+  }
+  
+  .hotel-name {
+    font-size: 0.85em;
+  }
+  
+  .card-nav-content {
+    gap: 6px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0.5rem 0.5rem;
+  }
+  
+  .nav-card {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  
+  .nav-card-link {
+    font-size: 12px;
+    padding: 10px 8px;
+    gap: 4px;
+  }
+  
+  .nav-card-link::after {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hotel-name {
+    font-size: 0.75em;
+  }
+  
+  .nav-card-link {
+    font-size: 11px;
+    padding: 10px 6px;
+  }
 }
 
 /* Footer */
