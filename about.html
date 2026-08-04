@@ -536,6 +536,8 @@
 
       groups.forEach(group => {
         const { cards, naturalTops, endTop, innerScrollIndices } = group;
+        const stripDist = Math.min(120, containerHeight * 0.12);
+        const fades = [];
 
         cards.forEach((card, i) => {
           const cardTop = naturalTops[i];
@@ -550,11 +552,18 @@
           let u = scrollTop > pinStart ? Math.min(1, (scrollTop - pinStart) / settlePx) : 0;
           const ease = 1 - Math.pow(1 - u, 4);
 
+          // Deep cards fade away as more sections lock above them; each faded
+          // card gives up its 30px slot so the cards below collapse up and
+          // the surviving caps stay anchored at the top of the stack.
+          let collapse = 0;
+          for (let j = 0; j < i; j++) collapse += fades[j];
+          collapse *= 30;
+
           let translateY = 0;
           if (scrollTop >= pinStart && scrollTop <= pinEnd) {
-            translateY = ease * (scrollTop - cardTop + stackPositionPx + 30 * i);
+            translateY = ease * (scrollTop - cardTop + stackPositionPx + 30 * i - collapse);
           } else if (scrollTop > pinEnd) {
-            translateY = pinEnd - cardTop + stackPositionPx + 30 * i;
+            translateY = pinEnd - cardTop + stackPositionPx + 30 * i - collapse;
           }
 
           // Scale finishes at the same moment the card locks, so the lock
@@ -571,18 +580,17 @@
           if (i < cards.length - 1) {
             const coveredAt = naturalTops[i + 1] - stackPositionPx - 30 * (i + 1);
             const cardH = group.innerGroups[i] ? group.innerGroups[i].contentHeight : card.offsetHeight;
-            const stripDist = Math.min(120, containerHeight * 0.12);
             const covered = scrollTop > coveredAt;
             const cu = covered ? Math.min(1, (scrollTop - coveredAt) / stripDist) : 0;
             // Only the two sections directly under the active one keep a
             // sliver; deeper locked sections fade fully away so the pinned
             // stack never piles up thick at the top.
-            let strip = 30 * (cu * (2 - cu));
+            fades[i] = 0;
             if (i <= cards.length - 4) {
               const fadeAt = naturalTops[i + 2] - stackPositionPx - 30 * (i + 2);
-              const fu = scrollTop > fadeAt ? Math.min(1, (scrollTop - fadeAt) / stripDist) : 0;
-              strip *= (1 - fu) * (1 - fu);
+              fades[i] = scrollTop > fadeAt ? Math.min(1, (scrollTop - fadeAt) / stripDist) : 0;
             }
+            const strip = 30 * (cu * (2 - cu)) * (1 - fades[i]) * (1 - fades[i]);
             const clip = covered
               ? 'inset(0 0 ' + (cardH - strip / scale) + 'px 0)'
               : '';
