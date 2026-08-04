@@ -478,9 +478,9 @@
       touchMultiplier: 1,
       infinite: false,
       wheelMultiplier: 1,
-      lerp: 0.08,
+      inertia: 0.12,
       syncTouch: true,
-      syncTouchLerp: 0.05
+      syncTouchLerp: 0.2
     });
 
     const groups = [];
@@ -570,10 +570,12 @@
           // them.
           if (i < cards.length - 1) {
             const coveredAt = naturalTops[i + 1] - stackPositionPx - 30 * (i + 1);
-            const covered = scrollTop > coveredAt;
             const cardH = group.innerGroups[i] ? group.innerGroups[i].contentHeight : card.offsetHeight;
-            const clip = covered
-              ? 'inset(0 0 ' + (cardH - 30 / scale) + 'px 0)'
+            const stripDist = Math.min(120, containerHeight * 0.12);
+            const cu = scrollTop > coveredAt ? Math.min(1, (scrollTop - coveredAt) / stripDist) : 0;
+            const reveal = cu * (2 - cu);
+            const clip = cu > 0
+              ? 'inset(0 0 ' + (cardH - (30 / scale) * reveal) + 'px 0)'
               : '';
             if (lastClip.get(card) !== clip) {
               lastClip.set(card, clip);
@@ -589,8 +591,12 @@
           if (inner && inner.items.length && innerScrollIndices.has(i)) {
             let innerScroll = 0;
             if (scrollTop >= settleEnd) {
+              const raw = scrollTop - settleEnd;
+              const handoffPx = Math.min(70, containerHeight * 0.06);
+              const u = Math.min(1, raw / handoffPx);
+              const s = u * u * (3 - 2 * u);
               innerScroll = Math.min(
-                scrollTop - settleEnd,
+                raw * s,
                 Math.max(pinEnd - settleEnd, inner.contentHeight)
               );
             }
