@@ -561,13 +561,15 @@
 
           setTransform(card, translateY, scale);
 
-          // Locked cards only expose their 30px top strip so tall sections
-          // (Amenities & Facilities, Guest Experience) don't show their bodies
-          // under the last card.
+          // Cards only expose their 30px top strip once the card above them
+          // has locked in, so tall sections (Amenities & Facilities, Guest
+          // Experience) never show their bodies under the sections covering
+          // them.
           if (i < cards.length - 1) {
-            const locked = scrollTop > pinEnd;
+            const coveredAt = naturalTops[i + 1] - stackPositionPx - 30 * (i + 1);
+            const covered = scrollTop > coveredAt;
             const cardH = group.innerGroups[i] ? group.innerGroups[i].contentHeight : card.offsetHeight;
-            const clip = locked
+            const clip = covered
               ? 'inset(0 0 ' + (cardH - 30 / scale) + 'px 0)'
               : '';
             if (lastClip.get(card) !== clip) {
