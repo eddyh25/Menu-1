@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Grand Hأ´tel Bois de Boulogne</title>
+  <title>About Grand Hôtel Bois de Boulogne</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -183,7 +183,7 @@
     .main-content {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px 55vh;
+      padding: 0 20px calc(60vh + 60px);
     }
     section {
       background: #fff;
@@ -276,7 +276,7 @@
       position: relative;
     }
     .testimonial::before {
-      content: "â€œ";
+      content: "“";
       font-size: 3em;
       color: #8b0000;
       position: absolute;
@@ -370,21 +370,21 @@
         <a href="about.html">About</a>
       </div>
     </div>
-    <h1 class="hotel-name">Grand Hأ´tel Bois de Boulogne</h1>
+    <h1 class="hotel-name">Grand Hôtel Bois de Boulogne</h1>
     <div></div>
   </div>
 
   <div class="main-content">
     <header>
-      <img src="logo_transparent.png" alt="Grand Hأ´tel Bois de Boulogne logo">
-      <h1>About Grand Hأ´tel Bois de Boulogne</h1>
+      <img src="logo_transparent.png" alt="Grand Hôtel Bois de Boulogne logo">
+      <h1>About Grand Hôtel Bois de Boulogne</h1>
     </header>
 
     <section class="scroll-stack-card">
       <h2>Welcome</h2>
       <p>
-        Nestled in pine-forested grounds of around 24,000 mآ² in Dhour El Choueir at approximately 1,200 m elevation, 
-        <strong>Grand Hأ´tel Bois de Boulogne</strong> offers a peaceful mountain escape just 30â€“40 km from Beirut and the international airport. 
+        Nestled in pine-forested grounds of around 24,000 m² in Dhour El Choueir at approximately 1,200 m elevation, 
+        <strong>Grand Hôtel Bois de Boulogne</strong> offers a peaceful mountain escape just 30–40 km from Beirut and the international airport. 
         Conveniently located between Beirut and the Bekaa Valley, it is only 8 km from Zaarour ski slopes.
       </p>
     </section>
@@ -400,7 +400,7 @@
     <section class="scroll-stack-card">
       <h2 id="guest-rooms-title">Guest Rooms & Accommodation</h2>
       <p>
-        The hotel features 78â€“100 guest rooms and 12 suites/apartments, some with separate living spaces or kitchensâ€”ideal for families or long stays. 
+        The hotel features 78–100 guest rooms and 12 suites/apartments, some with separate living spaces or kitchens—ideal for families or long stays. 
         Guests particularly appreciate the quiet atmosphere, spacious rooms, and comfortable beds.
       </p>
     </section>
@@ -412,7 +412,7 @@
         <div class="amenity"><i class="fas fa-concierge-bell"></i> 24-hour reception & concierge service</div>
         <div class="amenity"><i class="fas fa-utensils"></i> On-site restaurant & Sunday brunch</div>
         <div class="amenity"><i class="fas fa-glass-martini-alt"></i> Cozy bar/lounge with fireplace</div>
-        <div class="amenity"><i class="fas fa-child"></i> Children's playground (ages 3â€“10)</div>
+        <div class="amenity"><i class="fas fa-child"></i> Children's playground (ages 3–10)</div>
         <div class="amenity"><i class="fas fa-briefcase"></i> Business centre & meeting room</div>
         <div class="amenity"><i class="fas fa-parking"></i> Private parking & airport shuttle (surcharge)</div>
         <div class="amenity"><i class="fas fa-soap"></i> Laundry & daily housekeeping</div>
@@ -427,12 +427,12 @@
     <section class="scroll-stack-card stack-scroll" id="guest-experience">
       <h2>Guest Experience</h2>
       <div class="testimonial">
-        "This is an excellent hotel with great value for money! Absolutely beautiful lobbyâ€¦ staff are extremely niceâ€¦ a family business where you feel you belong."<br>
-        â€” Tripadvisor, February 2024
+        "This is an excellent hotel with great value for money! Absolutely beautiful lobby… staff are extremely nice… a family business where you feel you belong."<br>
+        — Tripadvisor, February 2024
       </div>
       <div class="testimonial">
-        "What is specialâ€¦ is its traditional charm. Breakfast is included, new playground for kids, and wonderful walks in the nearby woods."<br>
-        â€” Tripadvisor guest, 2016
+        "What is special… is its traditional charm. Breakfast is included, new playground for kids, and wonderful walks in the nearby woods."<br>
+        — Tripadvisor guest, 2016
       </div>
     </section>
 
@@ -441,7 +441,7 @@
       <p>
         <strong>Address:</strong> Main Road of Bois de Boulogne, Dhour El Choueir 1204, Mount Lebanon, Lebanon<br>
         <strong>Phone:</strong> +961 4 295 100<br>
-        The hotel overlooks peaceful pine forests in the scenic Bois de Boulogne areaâ€”ideal for a relaxing escape.
+        The hotel overlooks peaceful pine forests in the scenic Bois de Boulogne area—ideal for a relaxing escape.
       </p>
     </section>
     <div class="scroll-stack-end"></div>
@@ -465,7 +465,7 @@
         </svg>
       </a>
     </div>
-    <p>&copy; 2025 Grand Hأ´tel Bois de Boulogne. All rights reserved.</p>
+    <p>&copy; 2025 Grand Hôtel Bois de Boulogne. All rights reserved.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
@@ -533,31 +533,34 @@
       const scrollTop = window.scrollY;
       const containerHeight = window.innerHeight;
       const stackPositionPx = 0.20 * containerHeight;
-      const scaleEndPositionPx = 0.10 * containerHeight;
 
       groups.forEach(group => {
         const { cards, naturalTops, endTop, innerScrollIndices } = group;
 
         cards.forEach((card, i) => {
           const cardTop = naturalTops[i];
-          const triggerStart = cardTop - stackPositionPx - 30 * i;
-          const triggerEnd = cardTop - scaleEndPositionPx;
-          let scaleProgress = (scrollTop - triggerStart) / (triggerEnd - triggerStart);
-          scaleProgress = Math.max(0, Math.min(1, scaleProgress));
-          const targetScale = 0.85 + 0.03 * i;
-          const scale = 1 - scaleProgress * (1 - targetScale);
-
-          // Amenities & Facilities and Guest Experience stick in place (lock)
-          // after their inner items finish scrolling, matching the other
-          // sections' scroll-lock behavior.
+          const pinStart = cardTop - stackPositionPx - 30 * i;
           const pinEnd = endTop - containerHeight / 2;
-          const pinStart = triggerStart;
+          const settlePx = Math.min(120, containerHeight * 0.12);
+          const settleEnd = pinStart + settlePx;
+
+          // Cards ease into their locked position (decelerate to a stop over
+          // the settle distance) so each canvas feels like it catches and
+          // locks into place instead of stopping abruptly.
+          let u = scrollTop > pinStart ? Math.min(1, (scrollTop - pinStart) / settlePx) : 0;
+          const ease = 1 - Math.pow(1 - u, 4);
+
           let translateY = 0;
           if (scrollTop >= pinStart && scrollTop <= pinEnd) {
-            translateY = scrollTop - cardTop + stackPositionPx + 30 * i;
+            translateY = ease * (scrollTop - cardTop + stackPositionPx + 30 * i);
           } else if (scrollTop > pinEnd) {
             translateY = pinEnd - cardTop + stackPositionPx + 30 * i;
           }
+
+          // Scale finishes at the same moment the card locks, so the lock
+          // reads as one single motion.
+          const targetScale = 0.85 + 0.03 * i;
+          const scale = 1 - u * (1 - targetScale);
 
           setTransform(card, translateY, scale);
 
@@ -578,16 +581,17 @@
             }
           }
 
-          // Release sections scroll their inner items through the pinned
-          // viewport 1:1 with the page scroll, then lock in place like the
-          // other sections while the next card stacks over them.
+          // Amenities & Facilities and Guest Experience wait for the outer
+          // section to lock, then scroll their inner items through the pinned
+          // viewport 1:1 with the page scroll, then lock like the other
+          // sections while the next card stacks over them.
           const inner = group.innerGroups[i];
           if (inner && inner.items.length && innerScrollIndices.has(i)) {
             let innerScroll = 0;
-            if (scrollTop >= pinStart) {
+            if (scrollTop >= settleEnd) {
               innerScroll = Math.min(
-                scrollTop - pinStart,
-                Math.max(pinEnd - pinStart, inner.contentHeight)
+                scrollTop - settleEnd,
+                Math.max(pinEnd - settleEnd, inner.contentHeight)
               );
             }
             const y = innerScroll > 0 ? -innerScroll : 0;
