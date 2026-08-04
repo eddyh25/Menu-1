@@ -572,7 +572,8 @@
             const coveredAt = naturalTops[i + 1] - stackPositionPx - 30 * (i + 1);
             const cardH = group.innerGroups[i] ? group.innerGroups[i].contentHeight : card.offsetHeight;
             const stripDist = Math.min(120, containerHeight * 0.12);
-            const cu = scrollTop > coveredAt ? Math.min(1, (scrollTop - coveredAt) / stripDist) : 0;
+            const covered = scrollTop > coveredAt;
+            const cu = covered ? Math.min(1, (scrollTop - coveredAt) / stripDist) : 0;
             // Only the two sections directly under the active one keep a
             // sliver; deeper locked sections fade fully away so the pinned
             // stack never piles up thick at the top.
@@ -582,7 +583,7 @@
               const fu = scrollTop > fadeAt ? Math.min(1, (scrollTop - fadeAt) / stripDist) : 0;
               strip *= (1 - fu) * (1 - fu);
             }
-            const clip = strip > 0
+            const clip = covered
               ? 'inset(0 0 ' + (cardH - strip / scale) + 'px 0)'
               : '';
             if (lastClip.get(card) !== clip) {
