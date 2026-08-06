@@ -107,15 +107,16 @@ body.fade-out {
   display: inline-block;
 }
 
-/* Brand (logo + hotel name) centered in the card navigation top bar */
+/* Brand (logo) anchored to the far right of the card navigation top bar */
 .brand {
-  display: inline-flex;
+  position: absolute;
+  right: 1.5rem;
+  top: 0;
+  height: 60px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   text-decoration: none;
-  min-width: 0;
-  max-width: 100%;
   transition: opacity 0.3s ease;
 }
 
@@ -123,16 +124,12 @@ body.fade-out {
   opacity: 0.85;
 }
 
+/* Brighter + subtle light halo so the burgundy logo stands out on the dark green header */
 .brand-logo {
   height: 40px;
   width: auto;
-  flex-shrink: 0;
   display: block;
-  background-color: #fef7ec;
-  border-radius: 10px;
-  padding: 3px;
-  box-sizing: content-box;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.45) drop-shadow(0 0 3px rgba(255, 245, 230, 0.35));
 }
 
 .card-nav-content {
@@ -270,13 +267,15 @@ body.fade-out {
   }
   
   .brand {
-    gap: 6px;
+    right: 1rem;
+  }
+  
+  .card-nav-top .hotel-name {
+    font-size: 0.85em;
   }
   
   .brand-logo {
     height: 30px;
-    padding: 2px;
-    border-radius: 8px;
   }
   
   .card-nav-content {
