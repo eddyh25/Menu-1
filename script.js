@@ -25,9 +25,36 @@ class CardNavigation {
   
   init() {
     this.cards = this.nav.querySelectorAll('.nav-card');
+    this.highlightActiveCard();
     this.createTimeline();
     this.attachEventListeners();
     this.initScrollListener();
+  }
+  
+  /**
+   * Shade the dropdown button that matches the currently open page.
+   * Menu section pages (beverages/dessert) count as the "Menu" card.
+   */
+  highlightActiveCard() {
+    if (!this.cards || this.cards.length === 0) return;
+    
+    const fileName = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const targetHref = {
+      'index.html': 'index.html',
+      'food.html': 'food.html',
+      'beverages.html': 'food.html',
+      'dessert.html': 'food.html',
+      'feedback.html': 'feedback.html',
+      'about.html': 'about.html'
+    }[fileName] || fileName;
+    
+    this.cards.forEach(card => {
+      const link = card.querySelector('.nav-card-link');
+      if (link && link.getAttribute('href') === targetHref) {
+        card.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
   }
   
   calculateHeight() {
